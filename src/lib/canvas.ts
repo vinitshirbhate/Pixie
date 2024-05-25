@@ -122,42 +122,44 @@ export const handleCanvaseMouseMove = ({
 
   // depending on the selected shape, set the dimensions of the shape stored in shapeRef in previous step of handelCanvasMouseDown
   // calculate shape dimensions based on pointer coordinates
-  switch (selectedShapeRef?.current) {
-    case "rectangle":
-      shapeRef.current?.set({
-        width: pointer.x - (shapeRef.current?.left || 0),
-        height: pointer.y - (shapeRef.current?.top || 0),
-      });
-      break;
+  if (shapeRef.current) {
+    switch (selectedShapeRef?.current) {
+      case "rectangle":
+        shapeRef.current?.set({
+          width: pointer.x - (shapeRef.current?.left || 0),
+          height: pointer.y - (shapeRef.current?.top || 0),
+        });
+        break;
 
-    case "circle":
-      shapeRef.current.set({
-        radius: Math.abs(pointer.x - (shapeRef.current?.left || 0)) / 2,
-      });
-      break;
+      case "circle":
+        shapeRef.current.set({
+          radius: Math.abs(pointer.x - (shapeRef.current?.left || 0)) / 2,
+        });
+        break;
 
-    case "triangle":
-      shapeRef.current?.set({
-        width: pointer.x - (shapeRef.current?.left || 0),
-        height: pointer.y - (shapeRef.current?.top || 0),
-      });
-      break;
+      case "triangle":
+        shapeRef.current?.set({
+          width: pointer.x - (shapeRef.current?.left || 0),
+          height: pointer.y - (shapeRef.current?.top || 0),
+        });
+        break;
 
-    case "line":
-      shapeRef.current?.set({
-        x2: pointer.x,
-        y2: pointer.y,
-      });
-      break;
+      case "line":
+        shapeRef.current?.set({
+          x2: pointer.x,
+          y2: pointer.y,
+        });
+        break;
 
-    case "image":
-      shapeRef.current?.set({
-        width: pointer.x - (shapeRef.current?.left || 0),
-        height: pointer.y - (shapeRef.current?.top || 0),
-      });
+      case "image":
+        shapeRef.current?.set({
+          width: pointer.x - (shapeRef.current?.left || 0),
+          height: pointer.y - (shapeRef.current?.top || 0),
+        });
 
-    default:
-      break;
+      default:
+        break;
+    }
   }
 
   // render objects on canvas
@@ -389,7 +391,7 @@ export const handleResize = ({ canvas }: { canvas: fabric.Canvas | null }) => {
   if (!canvas) return;
 
   canvas.setDimensions({
-    width: canvasElement.clientWidth,
+    width: canvasElement?.clientWidth,
     height: canvasElement.clientHeight,
   });
 };

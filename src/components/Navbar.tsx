@@ -9,7 +9,7 @@ import { ActiveElement, NavbarProps } from "../types/type";
 import { Button } from "./ui/button";
 import ShapesMenu from "./ShapesMenu";
 import ActiveUsers from "./users/ActiveUsers";
-import { NewThread } from "./new_components/comments/NewThread";
+import { NewThread } from "./comments/NewThreads";
 
 const Navbar = ({
   activeElement,
