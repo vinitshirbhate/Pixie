@@ -1,6 +1,6 @@
 import { LiveMap, createClient } from "@liveblocks/client";
 import { createRoomContext } from "@liveblocks/react";
-import { ReactionEvents } from "./src/types";
+import { ReactionEvent } from "./src/types/type";
 const client = createClient({
   throttle: 16,
   publicApiKey: process.env.NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY!,
@@ -38,7 +38,7 @@ type UserMeta = {
 
 // Optionally, the type of custom events broadcast and listened to in this
 // room. Use a union for multiple events. Must be JSON-serializable.
-type RoomEvent = ReactionEvents;
+type RoomEvent = ReactionEvent;
 
 // Optionally, when using Comments, ThreadMetadata represents metadata on
 // each thread. Can only contain booleans, strings, and numbers.
